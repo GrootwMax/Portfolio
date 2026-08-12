@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Editor Portfolio | Hybrid Suite & Collage Style</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Premium Google Fonts: DynaPuff (Chunky Display), Caveat (Handwriting), JetBrains Mono (Tech), Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DynaPuff:wght@700;900&family=JetBrains+Mono:wght@600;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    /* Typography */
+    .font-chunky { font-family: 'DynaPuff', cursive; }
+    .font-handwriting { font-family: 'Caveat', cursive; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* Dark Grid Timeline Texture */
+    body {
+      background-color: #0b0f19;
+      background-image: 
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 24px 24px, 40px 40px, 40px 40px;
+    }
+
+    /* Grid Paper Scrapbook Card */
+    .grid-paper-card {
+      background-color: #f8f6f0;
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+      background-size: 16px 16px;
+      color: #111111;
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.8);
+      position: relative;
+    }
+
+    /* Yellow Sticky Note */
+    .sticky-note-yellow {
+      background-color: #fef08a;
+      color: #1c1917;
+      box-shadow: 4px 6px 15px rgba(0,0,0,0.5);
+    }
+
+    /* Stamped Text Effect */
+    .stamped-text {
+      text-shadow: 3px 3px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+      letter-spacing: 0.05em;
+    }
+
+    /* Push Pins */
+    .push-pin-red {
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle at 35% 35%, #ff4d4d, #990000);
+      border-radius: 50%;
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.8);
+      position: absolute;
+      z-index: 30;
+    }
+
+    .push-pin-blue {
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle at 35% 35%, #38bdf8, #0369a1);
+      border-radius: 50%;
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.8);
+      position: absolute;
+      z-index: 30;
+    }
+
+    /* Clear Tape Overlay */
+    .tape-strip {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body class="text-slate-100 antialiased selection:bg-indigo-600 selection:text-white">
+
+  <!-- Navigation Bar (NLE Window Frame Style) -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+        <a href="#" class="font-chunky text-xl tracking-wider text-white hover:text-indigo-400 transition ml-2">
+          YOUR NAME<span class="text-indigo-500">.</span>
+        </a>
+      </div>
+
+      <div class="hidden md:flex gap-8 text-xs font-mono-code font-bold uppercase tracking-wider text-slate-300">
+        <a href="#about" class="hover:text-cyan-400 transition">01 // About</a>
+        <a href="#milestones" class="hover:text-cyan-400 transition">02 // Stats</a>
+        <a href="#tools" class="hover:text-cyan-400 transition">03 // Suite</a>
+        <a href="#work" class="hover:text-cyan-400 transition">04 // Works</a>
+        <a href="#reviews" class="hover:text-cyan-400 transition">05 // Reviews</a>
+      </div>
+
+      <a href="#contact" class="bg-indigo-600 hover:bg-indigo-500 text-white font-chunky text-xs uppercase px-5 py-2.5 rounded-full border border-indigo-400 shadow-md transition transform hover:-rotate-1">
+        Hire Me
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center pt-28 pb-16 px-6 relative overflow-hidden">
+    
+    <!-- Red Connecting String (SVG Overlay) -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-50 hidden sm:block" viewBox="0 0 1000 800" fill="none">
+      <path d="M 180,220 Q 320,380 480,240 T 780,320" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6 4"/>
+    </svg>
+
+    <div class="max-w-5xl w-full flex flex-col items-center space-y-8 relative">
+
+      <!-- NLE Playback Timecode Ribbon -->
+      <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 font-mono-code text-xs text-slate-300 shadow-lg">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-cyan-400 font-bold">TIMECODE: 00:01:24:12</span> • 4K 60FPS • US/UK/AU CLIENTS
+      </div>
+
+      <!-- Chunky Bubbly & Stamped Headlines -->
+      <div class="space-y-4 text-center relative z-20">
+        <div class="inline-block relative">
+          <div class="push-pin-red -top-3 -left-3"></div>
+          <h1 class="font-chunky text-5xl sm:text-7xl text-indigo-400 stamped-text tracking-wide uppercase transform -rotate-2">
+            VIDEO EDITOR
+          </h1>
+        </div>
+
+        <br/>
+
+        <div class="inline-block relative">
+          <div class="push-pin-blue -top-2 -right-3"></div>
+          <h1 class="font-chunky text-5xl sm:text-7xl text-stone-100 stamped-text tracking-wider uppercase transform rotate-1">
+            PORTFOLIO
+          </h1>
+        </div>
+      </div>
+
+      <!-- Camera Grid Paper Card (Doodle Camera Inspo) -->
+      <div class="grid-paper-card p-6 rounded-lg -rotate-1 max-w-sm w-full text-center border border-stone-300 relative my-2 z-20">
+        <div class="push-pin-red -top-3 -left-2"></div>
+        <div class="tape-strip w-20 h-6 absolute -top-3 right-8 rotate-6"></div>
+        
+        <div class="flex justify-center mb-2">
+          <div class="relative">
+            <i data-lucide="camera" class="w-14 h-14 text-black stroke-[1.75]"></i>
+            <span class="absolute -top-3 -right-6 text-indigo-600 font-handwriting text-2xl font-bold">// 4K Edit</span>
+          </div>
+        </div>
+        
+        <p class="font-handwriting text-2xl text-stone-900 font-bold leading-tight">
+          Crafting stories, framing viewer retention.
+        </p>
+      </div>
+
+      <!-- Subtitle -->
+      <div class="text-center max-w-2xl space-y-3 relative z-20">
+        <p class="text-slate-300 text-base sm:text-lg font-medium">
+          Transforming Raw Footage Into High-Retention Long-Form Stories.
+        </p>
+        <p class="text-slate-400 text-xs font-mono-code">
+          1.5 Years Experience • Vlogs, Weddings, Lifestyle & Milestone Events
+        </p>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="pt-2 relative z-20">
+        <a href="#work" class="bg-indigo-600 hover:bg-indigo-500 text-white font-chunky text-sm tracking-wider uppercase px-8 py-4 rounded-sm shadow-xl hover:scale-105 transition border-2 border-indigo-400 inline-block">
+          EXPLORE WORKS
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Table of Contents / Quick Index -->
+  <section class="py-12 px-6 max-w-4xl mx-auto border-t border-b border-slate-800 my-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      
+      <div class="grid-paper-card px-6 py-3 -rotate-2 text-center rounded border border-stone-300">
+        <div class="push-pin-red -top-2 -left-2"></div>
+        <h2 class="font-chunky text-xl text-black uppercase">INDEX / CONTENTS</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 font-mono-code text-xs w-full md:w-auto">
+        <a href="#about" class="flex items-center gap-1.5 text-slate-300 hover:text-cyan-400 transition bg-slate-900 border border-slate-800 px-3 py-2 rounded">
+          <span class="text-cyan-400 font-bold">01</span> Intro
+        </a>
+        <a href="#milestones" class="flex items-center gap-1.5 text-slate-300 hover:text-cyan-400 transition bg-slate-900 border border-slate-800 px-3 py-2 rounded">
+          <span class="text-cyan-400 font-bold">02</span> Stats
+        </a>
+        <a href="#tools" class="flex items-center gap-1.5 text-slate-300 hover:text-cyan-400 transition bg-slate-900 border border-slate-800 px-3 py-2 rounded">
+          <span class="text-cyan-400 font-bold">03</span> Suite
+        </a>
+        <a href="#work" class="flex items-center gap-1.5 text-slate-300 hover:text-cyan-400 transition bg-slate-900 border border-slate-800 px-3 py-2 rounded">
+          <span class="text-cyan-400 font-bold">04</span> Works
+        </a>
+        <a href="#reviews" class="flex items-center gap-1.5 text-slate-300 hover:text-cyan-400 transition bg-slate-900 border border-slate-800 px-3 py-2 rounded col-span-2 sm:col-span-1">
+          <span class="text-cyan-400 font-bold">05</span> Reviews
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      
+      <!-- Left: Copywriting -->
+      <div class="space-y-6">
+        <div class="grid-paper-card px-6 py-3 rotate-1 inline-block rounded border border-stone-300">
+          <div class="push-pin-blue -top-2 -right-2"></div>
+          <h2 class="font-chunky text-2xl text-black uppercase">ABOUT MY EDITING</h2>
+        </div>
+
+        <p class="text-slate-300 leading-relaxed text-base">
+          I am a dedicated <span class="text-white font-bold underline decoration-indigo-500">Video Editor with 1.5 years of experience</span> specialized strictly in long-form storytelling.
+        </p>
+
+        <p class="text-slate-400 leading-relaxed text-sm">
+          Over the past year and a half, I have partnered with creators, event hosts, and couples across the <span class="text-slate-200 font-semibold">United States, United Kingdom, and Australia</span>. My core focus is on <span class="text-slate-200 font-semibold">vlogs, lifestyle stories, weddings, and milestone celebrations</span>.
+        </p>
+
+        <ul class="space-y-2 text-slate-300 text-sm font-medium">
+          <li class="flex items-center gap-2">
+            <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> High Retention Long-Form Pacing
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Dialogue Cleanup & Multi-track Audio Balancing
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Natural Color Balancing & Visual Structure
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: Technical Focus Card -->
+      <div class="bg-slate-900/90 border border-slate-800 p-8 rounded-2xl relative shadow-2xl">
+        <div class="tape-strip w-24 h-6 absolute -top-3 left-8 -rotate-2"></div>
+        <h3 class="font-chunky text-xl text-white mb-6 uppercase tracking-wider">Workflow Metrics</h3>
+        
+        <div class="space-y-5 font-mono-code text-xs">
+          <div>
+            <div class="flex justify-between mb-1.5 text-slate-200">
+              <span>Primary NLE (Premiere Pro)</span>
+              <span class="text-cyan-400">95%</span>
+            </div>
+            <div class="w-full bg-slate-950 h-2 rounded overflow-hidden border border-slate-800">
+              <div class="bg-indigo-500 h-full w-[95%]"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1.5 text-slate-200">
+              <span>CapCut PC</span>
+              <span class="text-cyan-400">85%</span>
+            </div>
+            <div class="w-full bg-slate-950 h-2 rounded overflow-hidden border border-slate-800">
+              <div class="bg-indigo-500 h-full w-[85%]"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1.5 text-slate-200">
+              <span>Viewer Retention Pacing</span>
+              <span class="text-cyan-400">92%</span>
+            </div>
+            <div class="w-full bg-slate-950 h-2 rounded overflow-hidden border border-slate-800">
+              <div class="bg-indigo-500 h-full w-[92%]"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1.5 text-slate-200">
+              <span>Multi-Track Audio Balancing</span>
+              <span class="text-cyan-400">90%</span>
+            </div>
+            <div class="w-full bg-slate-950 h-2 rounded overflow-hidden border border-slate-800">
+              <div class="bg-indigo-500 h-full w-[90%]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Milestones & Global Reach Section -->
+  <section id="milestones" class="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800">
+    <div class="text-center mb-10">
+      <div class="grid-paper-card px-8 py-3 rotate-1 inline-block rounded border border-stone-300">
+        <div class="push-pin-red -top-2 -right-2"></div>
+        <h2 class="font-chunky text-2xl text-black uppercase">MILESTONES & GLOBAL REACH</h2>
+      </div>
+      <p class="text-slate-400 text-sm mt-2 font-mono-code">Delivering long-form videos across continents with reliability and speed.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Milestone Card 1: 10+ International Clients -->
+      <div class="grid-paper-card p-8 -rotate-1 rounded-xl border border-stone-300 flex flex-col sm:flex-row items-center gap-6 relative shadow-xl">
+        <div class="push-pin-blue -top-3 -left-3"></div>
+        <div class="tape-strip w-20 h-5 absolute -top-3 right-6 rotate-3"></div>
+        <div class="w-20 h-20 bg-indigo-950 text-cyan-300 rounded-2xl flex flex-col items-center justify-center border-2 border-cyan-400 shrink-0 font-chunky shadow-inner">
+          <span class="text-3xl font-extrabold leading-none">10+</span>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-chunky text-xl text-black uppercase">International Clients</h3>
+          <p class="font-handwriting text-stone-800 text-xl font-bold mt-1 leading-snug">
+            Trusted by creators, vloggers & couples across the US, UK, and Australia.
+          </p>
+          <div class="mt-2 inline-flex items-center gap-2 font-mono-code text-xs text-indigo-700 font-bold">
+            <i data-lucide="globe" class="w-4 h-4 text-indigo-600"></i> Seamless Time-Zone Collaboration
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone Card 2: 10+ Successful Project Completions -->
+      <div class="sticky-note-yellow p-8 rotate-1 rounded-xl flex flex-col sm:flex-row items-center gap-6 relative shadow-xl">
+        <div class="push-pin-red -top-3 -right-3"></div>
+        <div class="w-20 h-20 bg-stone-900 text-yellow-300 rounded-2xl flex flex-col items-center justify-center border-2 border-yellow-400 shrink-0 font-chunky shadow-inner">
+          <span class="text-3xl font-extrabold leading-none">10+</span>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-chunky text-stone-950 text-xl uppercase">Successful Projects</h3>
+          <p class="font-handwriting text-stone-900 text-xl font-bold mt-1 leading-snug">
+            Full-length YouTube vlogs, wedding highlights & milestone celebrations delivered on schedule.
+          </p>
+          <div class="mt-2 inline-flex items-center gap-2 font-mono-code text-xs text-indigo-900 font-bold">
+            <i data-lucide="check-circle" class="w-4 h-4 text-indigo-800"></i> 100% Client Satisfaction Rate
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tool Suite Section -->
+  <section id="tools" class="py-12 px-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Premiere Pro Sticky Card -->
+      <div class="sticky-note-yellow p-5 -rotate-1 rounded flex items-center justify-between relative">
+        <div class="push-pin-red -top-2 -left-2"></div>
+        <div class="tape-strip w-16 h-5 absolute -top-2 right-6 rotate-3"></div>
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 bg-indigo-950 text-cyan-300 font-mono-code font-bold text-sm flex items-center justify-center rounded border border-cyan-400">Pr</div>
+          <div>
+            <h4 class="font-chunky text-black text-base">Adobe Premiere Pro</h4>
+            <p class="font-handwriting text-stone-800 text-base font-bold">Primary NLE for multicam assembly & pacing.</p>
+          </div>
+        </div>
+        <span class="font-mono-code text-xs font-bold text-indigo-700">[PRIMARY]</span>
+      </div>
+
+      <!-- CapCut PC Card -->
+      <div class="grid-paper-card p-5 rotate-2 rounded border border-stone-300 flex items-center justify-between">
+        <div class="push-pin-blue -top-2 -right-2"></div>
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 bg-black text-white font-mono-code font-bold text-sm flex items-center justify-center rounded">Cc</div>
+          <div>
+            <h4 class="font-chunky text-black text-base">CapCut PC</h4>
+            <p class="font-handwriting text-stone-700 text-base font-bold">Secondary video editor & captions.</p>
+          </div>
+        </div>
+        <span class="font-mono-code text-xs font-bold text-indigo-600">[SECONDARY]</span>
+      </div>
+
+      <!-- YouTube Long-Form Card -->
+      <div class="grid-paper-card p-5 -rotate-2 rounded border border-stone-300 flex items-center justify-between">
+        <div class="push-pin-red -top-2 -left-2"></div>
+        <div class="flex items-center gap-4">
+          <i data-lucide="youtube" class="w-9 h-9 text-red-600 fill-red-600"></i>
+          <div>
+            <h4 class="font-chunky text-slate-900 text-base">YouTube Long-Form</h4>
+            <p class="font-handwriting text-slate-800 text-base font-bold">Retention-driven structure & chapter cuts.</p>
+          </div>
+        </div>
+        <span class="font-mono-code text-xs font-bold text-indigo-800">[SPECIALTY]</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Works Section -->
+  <section id="work" class="py-20 px-6 max-w-6xl mx-auto border-t border-slate-800">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      
+      <div>
+        <div class="grid-paper-card px-6 py-3 -rotate-2 inline-block mb-2 rounded border border-stone-300">
+          <div class="push-pin-red -top-2 -left-2"></div>
+          <h2 class="font-chunky text-2xl text-black uppercase">FEATURED WORKS</h2>
+        </div>
+        <p class="text-slate-400 text-sm mt-1">Explore selected long-form edits.</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-2" id="filter-buttons">
+        <button onclick="filterProjects('all')" class="filter-btn active bg-indigo-600 text-white font-chunky text-xs uppercase px-4 py-2.5 rounded transition">ALL TRACKS</button>
+        <button onclick="filterProjects('vlogs')" class="filter-btn bg-slate-900 text-slate-300 border border-slate-800 font-chunky text-xs uppercase px-4 py-2.5 rounded hover:bg-slate-800 transition">VLOGS & LIFESTYLE</button>
+        <button onclick="filterProjects('events')" class="filter-btn bg-slate-900 text-slate-300 border border-slate-800 font-chunky text-xs uppercase px-4 py-2.5 rounded hover:bg-slate-800 transition">WEDDINGS & EVENTS</button>
+      </div>
+
+    </div>
+
+    <!-- Project Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Video 1 -->
+      <div class="project-card group cursor-pointer bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden hover:border-indigo-500/50 transition duration-300 relative" data-category="vlogs" onclick="openVideo('https://www.youtube.com/embed/vaSNq6blhHA')">
+        <div class="relative aspect-video overflow-hidden bg-black">
+          <img src="https://img.youtube.com/vi/vaSNq6blhHA/hqdefault.jpg" alt="Daily Wellness Routine" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition">
+            <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition border border-indigo-400">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
+            </div>
+          </div>
+          <span class="absolute top-3 left-3 bg-black/80 border border-slate-800 text-cyan-400 text-[10px] font-mono-code px-2 py-0.5 rounded">SEQ_01</span>
+        </div>
+        <div class="p-5 space-y-2">
+          <span class="text-xs font-mono-code font-bold text-cyan-400 uppercase">// Vlogs & Lifestyle</span>
+          <h3 class="text-base font-bold font-chunky text-white group-hover:text-indigo-400 transition">The Daily Routine That Keeps Me Healthier</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Smooth story structure, natural tone balancing, and dialogue pacing.</p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="project-card group cursor-pointer bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden hover:border-indigo-500/50 transition duration-300 relative" data-category="vlogs" onclick="openVideo('https://www.youtube.com/embed/_Yj9ZxmpaX0')">
+        <div class="relative aspect-video overflow-hidden bg-black">
+          <img src="https://img.youtube.com/vi/_Yj9ZxmpaX0/hqdefault.jpg" alt="Simple Longevity Habits" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition">
+            <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition border border-indigo-400">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
+            </div>
+          </div>
+          <span class="absolute top-3 left-3 bg-black/80 border border-slate-800 text-cyan-400 text-[10px] font-mono-code px-2 py-0.5 rounded">SEQ_02</span>
+        </div>
+        <div class="p-5 space-y-2">
+          <span class="text-xs font-mono-code font-bold text-cyan-400 uppercase">// Vlogs & Lifestyle</span>
+          <h3 class="text-base font-bold font-chunky text-white group-hover:text-indigo-400 transition">Simple Longevity Habits</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Documentary-style pacing with clear chapter structures and clean sound design.</p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="project-card group cursor-pointer bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden hover:border-indigo-500/50 transition duration-300 relative" data-category="events" onclick="openVideo('https://www.youtube.com/embed/YZIMOTzy9io')">
+        <div class="relative aspect-video overflow-hidden bg-black">
+          <img src="https://img.youtube.com/vi/YZIMOTzy9io/hqdefault.jpg" alt="Baby Gender Reveal Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition">
+            <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition border border-indigo-400">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
+            </div>
+          </div>
+          <span class="absolute top-3 left-3 bg-black/80 border border-slate-800 text-cyan-400 text-[10px] font-mono-code px-2 py-0.5 rounded">SEQ_03</span>
+        </div>
+        <div class="p-5 space-y-2">
+          <span class="text-xs font-mono-code font-bold text-cyan-400 uppercase">// Weddings & Events</span>
+          <h3 class="text-base font-bold font-chunky text-white group-hover:text-indigo-400 transition">Baby Gender Reveal & Celebration Highlight</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Authentic event highlight focusing on key moments and music synchronization.</p>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="project-card group cursor-pointer bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden hover:border-indigo-500/50 transition duration-300 relative" data-category="vlogs" onclick="openVideo('https://www.youtube.com/embed/rKiq_iICzEc')">
+        <div class="relative aspect-video overflow-hidden bg-black">
+          <img src="https://img.youtube.com/vi/rKiq_iICzEc/hqdefault.jpg" alt="Boston Apartment Tour" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition">
+            <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition border border-indigo-400">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
+            </div>
+          </div>
+          <span class="absolute top-3 left-3 bg-black/80 border border-slate-800 text-cyan-400 text-[10px] font-mono-code px-2 py-0.5 rounded">SEQ_04</span>
+        </div>
+        <div class="p-5 space-y-2">
+          <span class="text-xs font-mono-code font-bold text-cyan-400 uppercase">// Vlogs & Lifestyle</span>
+          <h3 class="text-base font-bold font-chunky text-white group-hover:text-indigo-400 transition">Boston Apartment Walkthrough & Tour</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Engaging lifestyle walkthrough edit focused on viewer retention and fluid cuts.</p>
+        </div>
+      </div>
+
+      <!-- Video 5 -->
+      <div class="project-card group cursor-pointer bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden hover:border-indigo-500/50 transition duration-300 relative" data-category="vlogs" onclick="openVideo('https://www.youtube.com/embed/mf6dyoHMVg8')">
+        <div class="relative aspect-video overflow-hidden bg-black">
+          <img src="https://img.youtube.com/vi/mf6dyoHMVg8/hqdefault.jpg" alt="Aesthetic Evening Vlog" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition">
+            <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition border border-indigo-400">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
+            </div>
+          </div>
+          <span class="absolute top-3 left-3 bg-black/80 border border-slate-800 text-cyan-400 text-[10px] font-mono-code px-2 py-0.5 rounded">SEQ_05</span>
+        </div>
+        <div class="p-5 space-y-2">
+          <span class="text-xs font-mono-code font-bold text-cyan-400 uppercase">// Vlogs & Lifestyle</span>
+          <h3 class="text-base font-bold font-chunky text-white group-hover:text-indigo-400 transition">Aesthetic ASMR Life & Evening Vlog</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Atmospheric sound engineering, aesthetic color grading, and peaceful composition.</p>
+        </div>
+      </div>
+
+      <!-- Video 6 -->
+      <div class="project-card group cursor-pointer bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden hover:border-indigo-500/50 transition duration-300 relative" data-category="vlogs" onclick="openVideo('https://www.youtube.com/embed/YeY6ws3kbw8')">
+        <div class="relative aspect-video overflow-hidden bg-black">
+          <img src="https://img.youtube.com/vi/YeY6ws3kbw8/hqdefault.jpg" alt="Aesthetic Crockery Haul Vlog" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition">
+            <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition border border-indigo-400">
+              <i data-lucide="play" class="w-6 h-6 fill-white ml-1"></i>
+            </div>
+          </div>
+          <span class="absolute top-3 left-3 bg-black/80 border border-slate-800 text-cyan-400 text-[10px] font-mono-code px-2 py-0.5 rounded">SEQ_06</span>
+        </div>
+        <div class="p-5 space-y-2">
+          <span class="text-xs font-mono-code font-bold text-cyan-400 uppercase">// Vlogs & Lifestyle</span>
+          <h3 class="text-base font-bold font-chunky text-white group-hover:text-indigo-400 transition">Aesthetic Crockery Haul & Healthy Rice Bowl Vlog</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Calm lifestyle vlog editing, sound design, unboxing, and cozy aesthetic framing.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Client Reviews Section -->
+  <section id="reviews" class="py-20 px-6 max-w-6xl mx-auto border-t border-slate-800">
+    <div class="text-center mb-12">
+      <div class="grid-paper-card px-8 py-3 rotate-1 inline-block rounded border border-stone-300">
+        <div class="push-pin-red -top-2 -left-2"></div>
+        <h2 class="font-chunky text-2xl text-black uppercase">CLIENT REVIEWS</h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Review 1 -->
+      <div class="grid-paper-card p-6 rotate-1 rounded border border-stone-300 flex flex-col justify-between space-y-4">
+        <div class="push-pin-red -top-2 -right-2"></div>
+        <p class="text-stone-900 text-xs leading-relaxed font-medium">
+          "We handed over a mix of phone clips and camera footage from our gender reveal, unsure if it could be turned into a clean video. The way the reveal moment was built up with the music cut was perfect. Our family in India and the US loved watching it—felt very natural and well-structured."
+        </p>
+        <div class="border-t border-stone-300 pt-3">
+          <h4 class="font-chunky text-black text-sm">Sakarasam</h4>
+          <p class="text-indigo-600 font-mono-code font-bold text-[11px] uppercase">Gender Reveal Video</p>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="sticky-note-yellow p-6 -rotate-2 rounded flex flex-col justify-between space-y-4 relative">
+        <div class="push-pin-blue -top-2 -left-2"></div>
+        <p class="text-stone-900 text-xs leading-relaxed font-medium">
+          "Finding an editor who listens to how you want your wedding film to feel isn't easy. The dialogue mixing from our vows over the reception B-roll was seamless, and the color tones were clean and natural. We only had one minor tweak request and it was handled within hours."
+        </p>
+        <div class="border-t border-stone-400 pt-3">
+          <h4 class="font-chunky text-black text-sm">Mr. Alex & Mrs. Cassidy</h4>
+          <p class="text-indigo-700 font-mono-code font-bold text-[11px] uppercase">Wedding Highlight Film</p>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="grid-paper-card p-6 rotate-2 rounded border border-stone-300 flex flex-col justify-between space-y-4">
+        <div class="push-pin-red -top-2 -right-2"></div>
+        <p class="text-stone-900 text-xs leading-relaxed font-medium">
+          "We had multiple camera angles and ambient room noise from our ceremony. The final edit felt like a professional featurette—speeches were trimmed logically and the pacing kept everyone engaged. Super easy communication throughout."
+        </p>
+        <div class="border-t border-stone-300 pt-3">
+          <h4 class="font-chunky text-black text-sm">Mr. Mat & Mrs. Nicole</h4>
+          <p class="text-indigo-600 font-mono-code font-bold text-[11px] uppercase">Full Wedding Ceremony Film</p>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="grid-paper-card p-6 -rotate-1 rounded border border-stone-300 flex flex-col justify-between space-y-4">
+        <div class="push-pin-red -top-2 -left-2"></div>
+        <p class="text-slate-900 text-xs leading-relaxed font-medium">
+          "Vlog editing requires a very specific feel—it can't be too rushed or over-edited with random pop-ups. My channel relies on aesthetic, calm pacing and cozy ASMR audio balancing, and that was captured from day one. Saved me at least 15 hours of edit time every week."
+        </p>
+        <div class="border-t border-slate-300 pt-3">
+          <h4 class="font-chunky text-black text-sm">Soosonal</h4>
+          <p class="text-indigo-800 font-mono-code font-bold text-[11px] uppercase">YouTube Vlogger</p>
+        </div>
+      </div>
+
+      <!-- Review 5 -->
+      <div class="grid-paper-card p-6 rotate-1 rounded border border-stone-300 flex flex-col justify-between space-y-4 md:col-span-2 lg:col-span-1">
+        <div class="push-pin-blue -top-2 -right-2"></div>
+        <p class="text-stone-900 text-xs leading-relaxed font-medium">
+          "Turnaround time and narrative flow are critical for my channel. Dead air is trimmed cleanly without making the speech sound unnatural or robotic. The viewer retention graphs on my recent 15-minute videos have been noticeably smoother since working together."
+        </p>
+        <div class="border-t border-stone-300 pt-3">
+          <h4 class="font-chunky text-black text-sm">Ryan Loofy</h4>
+          <p class="text-indigo-600 font-mono-code font-bold text-[11px] uppercase">YouTube Creator</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 max-w-4xl mx-auto border-t border-slate-800 text-center">
+    <div class="grid-paper-card px-8 py-3 -rotate-2 inline-block mb-4 rounded border border-stone-300">
+      <div class="push-pin-red -top-2 -left-2"></div>
+      <h2 class="font-chunky text-2xl text-black uppercase">START A PROJECT</h2>
+    </div>
+    <p class="text-slate-400 text-sm max-w-lg mx-auto">Have footage ready to be edited? Send me a message below.</p>
+
+    <form class="mt-8 space-y-4 max-w-lg mx-auto text-left" action="https://formspree.io/f/your_form_id" method="POST">
+      <div>
+        <label class="block font-mono-code text-xs text-slate-300 uppercase mb-1">Your Name</label>
+        <input type="text" name="name" required placeholder="Alex Smith" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition">
+      </div>
+      <div>
+        <label class="block font-mono-code text-xs text-slate-300 uppercase mb-1">Email Address</label>
+        <input type="email" name="email" required placeholder="alex@example.com" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition">
+      </div>
+      <div>
+        <label class="block font-mono-code text-xs text-slate-300 uppercase mb-1">Project Scope</label>
+        <textarea name="message" rows="4" required placeholder="Describe your video project (vlog, wedding, birthday, deadline)..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-chunky text-sm tracking-wider uppercase py-4 rounded-lg border border-indigo-400 shadow-xl transition">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4">
+    <div class="relative w-full max-w-4xl bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+      <button onclick="closeVideo()" class="absolute top-4 right-4 z-10 bg-slate-800/80 hover:bg-slate-700 text-white rounded-full p-2 transition">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <div class="relative aspect-video">
+        <iframe id="modal-iframe" class="w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-slate-900 text-center text-slate-500 font-mono-code text-xs">
+    <p>© <span id="year"></span> YOUR NAME // ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Current Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Filter Logic
+    function filterProjects(category) {
+      const cards = document.querySelectorAll('.project-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white');
+        btn.classList.add('bg-slate-900', 'text-slate-300');
+      });
+
+      event.target.classList.remove('bg-slate-900', 'text-slate-300');
+      event.target.classList.add('bg-indigo-600', 'text-white');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Logic
+    const modal = document.getElementById('video-modal');
+    const iframe = document.getElementById('modal-iframe');
+
+    function openVideo(embedUrl) {
+      iframe.src = embedUrl + "?autoplay=1";
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeVideo() {
+      iframe.src = "";
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
