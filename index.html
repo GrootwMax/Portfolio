@@ -7,7 +7,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Premium Google Fonts: DynaPuff (Chunky Display), Caveat (Handwriting), JetBrains Mono (Tech), Plus Jakarta Sans -->
+  <!-- Premium Google Fonts: DynaPuff, Caveat, JetBrains Mono, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DynaPuff:wght@700;900&family=JetBrains+Mono:wght@600;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
@@ -77,19 +77,11 @@
       position: absolute;
       z-index: 30;
     }
-
-    /* Clear Tape Overlay */
-    .tape-strip {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(2px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
   </style>
 </head>
 <body class="text-slate-100 antialiased selection:bg-indigo-600 selection:text-white">
 
-  <!-- Navigation Bar (NLE Window Frame Style) -->
+  <!-- Navigation Bar -->
   <nav class="fixed top-0 left-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
@@ -97,7 +89,7 @@
         <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
         <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
         <a href="#" class="font-chunky text-xl tracking-wider text-white hover:text-indigo-400 transition ml-2">
-          TK Editz<span class="text-indigo-500">.</span>
+          YOUR NAME<span class="text-indigo-500">.</span>
         </a>
       </div>
 
@@ -150,10 +142,9 @@
         </div>
       </div>
 
-      <!-- Camera Grid Paper Card (Doodle Camera Inspo) -->
+      <!-- Camera Grid Paper Card -->
       <div class="grid-paper-card p-6 rounded-lg -rotate-1 max-w-sm w-full text-center border border-stone-300 relative my-2 z-20">
         <div class="push-pin-red -top-3 -left-2"></div>
-        <div class="tape-strip w-20 h-6 absolute -top-3 right-8 rotate-6"></div>
         
         <div class="flex justify-center mb-2">
           <div class="relative">
@@ -171,9 +162,6 @@
       <div class="text-center max-w-2xl space-y-3 relative z-20">
         <p class="text-slate-300 text-base sm:text-lg font-medium">
           Transforming Raw Footage Into High-Retention Long-Form Stories.
-        </p>
-        <p class="text-slate-400 text-xs font-mono-code">
-          1.5 Years Experience • Vlogs, Weddings, Lifestyle & Milestone Events
         </p>
       </div>
 
@@ -251,7 +239,6 @@
 
       <!-- Right: Technical Focus Card -->
       <div class="bg-slate-900/90 border border-slate-800 p-8 rounded-2xl relative shadow-2xl">
-        <div class="tape-strip w-24 h-6 absolute -top-3 left-8 -rotate-2"></div>
         <h3 class="font-chunky text-xl text-white mb-6 uppercase tracking-wider">Workflow Metrics</h3>
         
         <div class="space-y-5 font-mono-code text-xs">
@@ -315,7 +302,6 @@
       <!-- Milestone Card 1: 10+ International Clients -->
       <div class="grid-paper-card p-8 -rotate-1 rounded-xl border border-stone-300 flex flex-col sm:flex-row items-center gap-6 relative shadow-xl">
         <div class="push-pin-blue -top-3 -left-3"></div>
-        <div class="tape-strip w-20 h-5 absolute -top-3 right-6 rotate-3"></div>
         <div class="w-20 h-20 bg-indigo-950 text-cyan-300 rounded-2xl flex flex-col items-center justify-center border-2 border-cyan-400 shrink-0 font-chunky shadow-inner">
           <span class="text-3xl font-extrabold leading-none">10+</span>
         </div>
@@ -357,7 +343,6 @@
       <!-- Premiere Pro Sticky Card -->
       <div class="sticky-note-yellow p-5 -rotate-1 rounded flex items-center justify-between relative">
         <div class="push-pin-red -top-2 -left-2"></div>
-        <div class="tape-strip w-16 h-5 absolute -top-2 right-6 rotate-3"></div>
         <div class="flex items-center gap-4">
           <div class="w-10 h-10 bg-indigo-950 text-cyan-300 font-mono-code font-bold text-sm flex items-center justify-center rounded border border-cyan-400">Pr</div>
           <div>
@@ -612,9 +597,18 @@
       <div class="push-pin-red -top-2 -left-2"></div>
       <h2 class="font-chunky text-2xl text-black uppercase">START A PROJECT</h2>
     </div>
+    
+    <!-- Direct Email Badge -->
+    <div class="mb-6 flex justify-center">
+      <a href="mailto:7hflick977@gmail.com" class="inline-flex items-center gap-2 font-mono-code text-xs text-cyan-400 hover:text-cyan-300 bg-slate-900 border border-slate-800 px-4 py-2 rounded.lg transition shadow-md">
+        <i data-lucide="mail" class="w-4 h-4 text-indigo-400"></i> Direct Mail: 7hflick977@gmail.com
+      </a>
+    </div>
+
     <p class="text-slate-400 text-sm max-w-lg mx-auto">Have footage ready to be edited? Send me a message below.</p>
 
-    <form class="mt-8 space-y-4 max-w-lg mx-auto text-left" action="https://formspree.io/f/your_form_id" method="POST">
+    <!-- FORM -->
+    <form id="portfolio-form" class="mt-8 space-y-4 max-w-lg mx-auto text-left" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
       <div>
         <label class="block font-mono-code text-xs text-slate-300 uppercase mb-1">Your Name</label>
         <input type="text" name="name" required placeholder="Alex Smith" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition">
@@ -627,9 +621,13 @@
         <label class="block font-mono-code text-xs text-slate-300 uppercase mb-1">Project Scope</label>
         <textarea name="message" rows="4" required placeholder="Describe your video project (vlog, wedding, birthday, deadline)..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition"></textarea>
       </div>
-      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-chunky text-sm tracking-wider uppercase py-4 rounded-lg border border-indigo-400 shadow-xl transition">
+      
+      <button type="submit" id="submit-btn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-chunky text-sm tracking-wider uppercase py-4 rounded-lg border border-indigo-400 shadow-xl transition">
         Send Message
       </button>
+
+      <!-- Status Message -->
+      <p id="form-status" class="text-center font-mono-code text-xs mt-3 hidden"></p>
     </form>
   </section>
 
@@ -695,6 +693,50 @@
       modal.classList.remove('flex');
       modal.classList.add('hidden');
     }
+
+    // Direct Form Submission Logic
+    const form = document.getElementById("portfolio-form");
+    const status = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = "SENDING...";
+
+      const data = new FormData(event.target);
+      
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.classList.remove("hidden", "text-red-400");
+          status.classList.add("text-emerald-400");
+          status.innerHTML = "✓ Message sent successfully! I will reply directly to your email.";
+          form.reset();
+          submitBtn.innerText = "SEND MESSAGE";
+          submitBtn.disabled = false;
+        } else {
+          status.classList.remove("hidden", "text-emerald-400");
+          status.classList.add("text-red-400");
+          status.innerHTML = "❌ Please update your Formspree ID or contact 7hflick977@gmail.com directly.";
+          submitBtn.innerText = "SEND MESSAGE";
+          submitBtn.disabled = false;
+        }
+      }).catch(error => {
+        status.classList.remove("hidden", "text-emerald-400");
+        status.classList.add("text-red-400");
+        status.innerHTML = "❌ Message failed. Please write directly to 7hflick977@gmail.com.";
+        submitBtn.innerText = "SEND MESSAGE";
+        submitBtn.disabled = false;
+      });
+    }
+
+    form.addEventListener("submit", handleSubmit);
   </script>
 </body>
 </html>
