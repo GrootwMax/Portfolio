@@ -123,7 +123,7 @@
         <span class="text-cyan-400 font-bold">TIMECODE: 00:01:24:12</span> • 4K 60FPS • US/UK/AU CLIENTS
       </div>
 
-      <!-- Chunky Bubbly & Stamped Headlines -->
+      <!-- Headlines -->
       <div class="space-y-4 text-center relative z-20">
         <div class="inline-block relative">
           <div class="push-pin-red -top-3 -left-3"></div>
@@ -591,44 +591,36 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-20 px-6 max-w-4xl mx-auto border-t border-slate-800 text-center">
-    <div class="grid-paper-card px-8 py-3 -rotate-2 inline-block mb-4 rounded border border-stone-300">
+  <!-- Contact Details Section -->
+  <section id="contact" class="py-20 px-6 max-w-3xl mx-auto border-t border-slate-800 text-center">
+    <div class="grid-paper-card px-8 py-3 -rotate-2 inline-block mb-6 rounded border border-stone-300">
       <div class="push-pin-red -top-2 -left-2"></div>
-      <h2 class="font-chunky text-2xl text-black uppercase">START A PROJECT</h2>
-    </div>
-    
-    <!-- Direct Email Badge -->
-    <div class="mb-6 flex justify-center">
-      <a href="mailto:7hflick977@gmail.com" class="inline-flex items-center gap-2 font-mono-code text-xs text-cyan-400 hover:text-cyan-300 bg-slate-900 border border-slate-800 px-4 py-2 rounded.lg transition shadow-md">
-        <i data-lucide="mail" class="w-4 h-4 text-indigo-400"></i> Direct Mail: 7hflick977@gmail.com
-      </a>
+      <h2 class="font-chunky text-2xl text-black uppercase">CONTACT DETAILS</h2>
     </div>
 
-    <p class="text-slate-400 text-sm max-w-lg mx-auto">Have footage ready to be edited? Send me a message below.</p>
+    <p class="text-slate-300 text-base max-w-md mx-auto mb-8 font-medium">
+      Ready to start your next video project? Feel free to write to me directly via email.
+    </p>
 
-    <!-- FORM -->
-    <form id="portfolio-form" class="mt-8 space-y-4 max-w-lg mx-auto text-left" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-      <div>
-        <label class="block font-mono-code text-xs text-slate-300 uppercase mb-1">Your Name</label>
-        <input type="text" name="name" required placeholder="Alex Smith" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition">
-      </div>
-      <div>
-        <label class="block font-mono-code text-xs text-slate-300 uppercase mb-1">Email Address</label>
-        <input type="email" name="email" required placeholder="alex@example.com" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition">
-      </div>
-      <div>
-        <label class="block font-mono-code text-xs text-slate-300 uppercase mb-1">Project Scope</label>
-        <textarea name="message" rows="4" required placeholder="Describe your video project (vlog, wedding, birthday, deadline)..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition"></textarea>
-      </div>
+    <!-- Email Contact Card -->
+    <div class="grid-paper-card p-8 rotate-1 rounded-2xl border border-stone-300 max-w-lg mx-auto shadow-2xl relative">
+      <div class="push-pin-blue -top-3 -right-3"></div>
       
-      <button type="submit" id="submit-btn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-chunky text-sm tracking-wider uppercase py-4 rounded-lg border border-indigo-400 shadow-xl transition">
-        Send Message
-      </button>
+      <div class="flex flex-col items-center gap-4">
+        <div class="w-14 h-14 bg-indigo-950 text-cyan-300 rounded-full flex items-center justify-center border-2 border-cyan-400 shadow-md">
+          <i data-lucide="mail" class="w-7 h-7 text-cyan-300"></i>
+        </div>
 
-      <!-- Status Message -->
-      <p id="form-status" class="text-center font-mono-code text-xs mt-3 hidden"></p>
-    </form>
+        <div>
+          <span class="font-mono-code text-xs text-indigo-700 font-bold uppercase tracking-wider">// Direct Mail</span>
+          <h3 class="font-chunky text-xl sm:text-2xl text-black mt-1">7hflick977@gmail.com</h3>
+        </div>
+
+        <a href="mailto:7hflick977@gmail.com" class="mt-2 inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-chunky text-xs tracking-wider uppercase px-6 py-3 rounded-lg border border-indigo-400 shadow-lg hover:scale-105 transition">
+          <i data-lucide="send" class="w-4 h-4"></i> Send Email Directly
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Video Modal -->
@@ -693,50 +685,6 @@
       modal.classList.remove('flex');
       modal.classList.add('hidden');
     }
-
-    // Direct Form Submission Logic
-    const form = document.getElementById("portfolio-form");
-    const status = document.getElementById("form-status");
-    const submitBtn = document.getElementById("submit-btn");
-
-    async function handleSubmit(event) {
-      event.preventDefault();
-      submitBtn.disabled = true;
-      submitBtn.innerText = "SENDING...";
-
-      const data = new FormData(event.target);
-      
-      fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          status.classList.remove("hidden", "text-red-400");
-          status.classList.add("text-emerald-400");
-          status.innerHTML = "✓ Message sent successfully! I will reply directly to your email.";
-          form.reset();
-          submitBtn.innerText = "SEND MESSAGE";
-          submitBtn.disabled = false;
-        } else {
-          status.classList.remove("hidden", "text-emerald-400");
-          status.classList.add("text-red-400");
-          status.innerHTML = "❌ Please update your Formspree ID or contact 7hflick977@gmail.com directly.";
-          submitBtn.innerText = "SEND MESSAGE";
-          submitBtn.disabled = false;
-        }
-      }).catch(error => {
-        status.classList.remove("hidden", "text-emerald-400");
-        status.classList.add("text-red-400");
-        status.innerHTML = "❌ Message failed. Please write directly to 7hflick977@gmail.com.";
-        submitBtn.innerText = "SEND MESSAGE";
-        submitBtn.disabled = false;
-      });
-    }
-
-    form.addEventListener("submit", handleSubmit);
   </script>
 </body>
 </html>
